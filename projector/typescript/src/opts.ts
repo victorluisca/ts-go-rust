@@ -1,13 +1,19 @@
 import cli from "command-line-args";
 
 export type ProjectorOptions = {
+    arguments?: string[];
     pwd?: string;
     config?: string;
-    arguments?: string[];
 };
 
 export default function getOptions(): ProjectorOptions {
     return cli([
+        {
+            name: "arguments",
+            type: String,
+            defaultOption: true,
+            multiple: true,
+        },
         {
             name: "pwd",
             type: String,
@@ -17,12 +23,6 @@ export default function getOptions(): ProjectorOptions {
             name: "config",
             type: String,
             alias: "c",
-        },
-        {
-            name: "arguments",
-            type: String,
-            defaultOption: true,
-            multiple: true,
         },
     ]) as ProjectorOptions;
 }
